@@ -15,7 +15,7 @@ public:
 	~Lista_Dublu_Inlantuita();
 	void Push(char); //adauga un caracter in fata listei
 	void Pop(); //scot un nod din lista
-
+	void Push_Poz(char, int);
 	friend istream &operator >> (istream &in, Lista_Dublu_Inlantuita &x)
 	{
 		int dim;
@@ -40,6 +40,7 @@ public:
 		return out;
 	}
 	void operator = (Lista_Dublu_Inlantuita &);
+	void operator + (Lista_Dublu_Inlantuita &);
 
 };
 

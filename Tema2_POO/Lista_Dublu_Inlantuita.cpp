@@ -68,3 +68,30 @@ void Lista_Dublu_Inlantuita::operator = (Lista_Dublu_Inlantuita & list)
 		Push(caracter); //toate alocarile necesare se fac in functia push
 	}
 }
+
+void Lista_Dublu_Inlantuita::Push_Poz(char c, int poz)
+{
+	Node <char> &aux1 = (*this)[poz];
+	Node <char> &aux2 = (*this)[poz - 1];
+	Nod_Dublu <char>* aux11 = dynamic_cast<Nod_Dublu <char>*> (&aux1);
+	Nod_Dublu <char> * aux22 = dynamic_cast <Nod_Dublu <char>*> (&aux2);
+	Nod_Dublu<char> *nod_nou = new Nod_Dublu <char>;
+	
+	nod_nou->Set_Info(c);
+	aux22->Set_Urm(nod_nou);
+	aux11->Set_Ant(nod_nou);
+	nod_nou->Set_Ant(aux22);
+	nod_nou->Set_Urm(aux11);
+	size++;
+}
+
+void Lista_Dublu_Inlantuita::operator+ (Lista_Dublu_Inlantuita & list)
+{
+	Lista_Dublu_Inlantuita aux(*this);
+	
+	for (Node <char>*cnt = list.prim; cnt != NULL; cnt = cnt->Urmator())
+	{
+		aux.Push(cnt->Get_Info());
+	}
+	*this = aux;
+}
