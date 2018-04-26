@@ -25,7 +25,7 @@ Lista_Dublu_Inlantuita::Lista_Dublu_Inlantuita(const Lista_Dublu_Inlantuita & x)
 
 Lista_Dublu_Inlantuita::~Lista_Dublu_Inlantuita()
 {
-	while (size != 0)
+	while (size != 0&& prim !=NULL)
 	{
 		size--;
 		Pop();

@@ -27,7 +27,7 @@ Coada_Prioritati::Coada_Prioritati(const Coada_Prioritati & list)
 
  Coada_Prioritati::~Coada_Prioritati()
 {
-	 while (size != 0)
+	 while (size != 0&& prim!=NULL)
 	 {
 		 size--;
 		 Pop();
