@@ -31,8 +31,10 @@ Lista_Simplu_Inlantuita::Lista_Simplu_Inlantuita(const Lista_Simplu_Inlantuita &
 
 Lista_Simplu_Inlantuita::~Lista_Simplu_Inlantuita()
 {
-	while (prim != NULL)
-		Pop();
+	int it = 1;
+	while (prim != NULL && it <= size)
+	{Pop(); it++;
+	}
 }
 
 void Lista_Simplu_Inlantuita::Push(char c) //adauga un nod in fata listei 
@@ -73,22 +75,24 @@ void Lista_Simplu_Inlantuita::Set_size(int x)
 	size = x;
 }
 
-void Lista_Simplu_Inlantuita::operator= (Lista_Simplu_Inlantuita & list)
+void Lista_Simplu_Inlantuita::operator= (const Lista_Simplu_Inlantuita & list)
 {
 	
-	for (int i = 1; i <= size; i++) Pop();/* Eliberez memoria din lista curenta*/
+	for (int i = 1; i <= size&& prim!=NULL; i++) Pop();/* Eliberez memoria din lista curenta*/
 	size = 0;
 	prim = NULL;
-	for (Node <char> *q = list.prim; q != NULL; q = q->Urmator()) //copiez fiecare element din lista parametru in cea curenta
+	int it = 1;
+	for (Node <char> *q = list.prim; it<=list.size && q != NULL; q = q->Urmator()) //copiez fiecare element din lista parametru in cea curenta
 	{
-		char aux = q->Get_Info();
-		Push(aux);
-
+		it++;
+			char aux = q->Get_Info();
+			Push(aux);
+		
 	}
 
 }
 
-void Lista_Simplu_Inlantuita::operator+(Lista_Simplu_Inlantuita & list)
+Lista_Simplu_Inlantuita Lista_Simplu_Inlantuita::operator+(Lista_Simplu_Inlantuita & list)
 {
 	Lista_Simplu_Inlantuita lista_aux(*this);
 
@@ -98,6 +102,7 @@ void Lista_Simplu_Inlantuita::operator+(Lista_Simplu_Inlantuita & list)
 	aux = aux->Urmator();
 	}
 	*this = lista_aux;
+	return (*this);
 }
 
 Node <char> & Lista_Simplu_Inlantuita:: operator [] (int i)
@@ -145,4 +150,17 @@ int  Lista_Simplu_Inlantuita::Find_Element(char c) //cauta un element cu informa
 	}
 	return -1;
 
+}
+
+Lista_Simplu_Inlantuita  Lista_Simplu_Inlantuita:: operator- (Lista_Simplu_Inlantuita & list)
+{
+	Lista_Simplu_Inlantuita aux_list;
+     
+	for (Node <char> *aux = prim; aux != NULL; aux = aux->Urmator())
+	{
+		if (list.Find_Element(aux->Get_Info()) == -1) //nu se afla in lista pe care vreau sa o scad 
+			aux_list.Push(aux->Get_Info());
+	}
+	
+	return aux_list;
 }

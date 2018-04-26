@@ -13,7 +13,7 @@ public:
 	Node();
 	Node(T);
 	Node(const Node &);
-	~Node();
+	virtual ~Node();
 	void Set_Info(T);
 	virtual void Set_Urm(Node *);
 	Node * Urmator() const ;

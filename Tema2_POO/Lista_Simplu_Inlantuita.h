@@ -11,7 +11,7 @@ public:
 	Lista_Simplu_Inlantuita();
 	Lista_Simplu_Inlantuita(char c);
 	Lista_Simplu_Inlantuita(const Lista_Simplu_Inlantuita &);
-	~Lista_Simplu_Inlantuita();
+	virtual ~Lista_Simplu_Inlantuita();
 	virtual void Push(char ); //adauga un caracter in fata listei
 	virtual void Push_Poz(char, int);
 	virtual char Front();
@@ -35,15 +35,18 @@ public:
 	friend ostream& operator << (ostream &out, Lista_Simplu_Inlantuita &x)
 	{
 		out << x.Get_size()<<"\n";
-		for (Node <char> *aux=x.prim;aux!=NULL;aux=aux->Urmator())
+		int it = 0;
+		for (Node <char> *aux=x.prim;aux!=NULL&& it <=x.size;aux=aux->Urmator())
 		{
+			it++;
 			out << (*aux)<<" ";
 		}
 		return out;
 	}
 
-	void operator = (Lista_Simplu_Inlantuita & );
-	void operator +(Lista_Simplu_Inlantuita &);
+	void operator = (const Lista_Simplu_Inlantuita & );
+	Lista_Simplu_Inlantuita operator +(Lista_Simplu_Inlantuita &);
+	Lista_Simplu_Inlantuita  operator -(Lista_Simplu_Inlantuita &);
 	Node <char> & operator [] (int i);
 	Node <char> * Split(int i); // imparte lista in 2 incepand cu pozitia i, returneaza pointerul de inceput celei de a doua liste 
 	int Find_Element(char c); // cauta un element in lista si returneaza prima pozitie pe care apare 

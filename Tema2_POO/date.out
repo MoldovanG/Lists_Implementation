@@ -1,18 +1,9 @@
 4
-e
-d
-b
-a
- 
+e d b a  
 3
-c
-x
-z
- 
+c x z  
 2
-r
-e
- 
+r e  
 3
 b3
 q2
@@ -23,3 +14,16 @@ f3
 y2
 t1
 
+Elementul de pe poz 3 este :x
+Before split : 
+4
+e d x b a 
+After split:
+3
+e d x 
+6
+e d x c x z 
+3
+c x z 
+2
+d e 

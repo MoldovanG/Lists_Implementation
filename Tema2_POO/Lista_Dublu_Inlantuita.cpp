@@ -56,9 +56,9 @@ void Lista_Dublu_Inlantuita::Pop()
 
 }
 
-void Lista_Dublu_Inlantuita::operator = (Lista_Dublu_Inlantuita & list)
+void Lista_Dublu_Inlantuita::operator = (const Lista_Dublu_Inlantuita & list)
 {
-	for (int i = 1; i <= size; i++)
+	for (int i = 1; i <= size&& prim!=NULL; i++)
 		Pop();//eliberez memoria listei curente 
 	size = 0;
 
@@ -67,6 +67,7 @@ void Lista_Dublu_Inlantuita::operator = (Lista_Dublu_Inlantuita & list)
 		char caracter = aux->Get_Info();
 		Push(caracter); //toate alocarile necesare se fac in functia push
 	}
+
 }
 
 void Lista_Dublu_Inlantuita::Push_Poz(char c, int poz)
@@ -85,7 +86,7 @@ void Lista_Dublu_Inlantuita::Push_Poz(char c, int poz)
 	size++;
 }
 
-void Lista_Dublu_Inlantuita::operator+ (Lista_Dublu_Inlantuita & list)
+Lista_Dublu_Inlantuita Lista_Dublu_Inlantuita::operator+ (Lista_Dublu_Inlantuita & list)
 {
 	Lista_Dublu_Inlantuita aux(*this);
 	
@@ -94,4 +95,5 @@ void Lista_Dublu_Inlantuita::operator+ (Lista_Dublu_Inlantuita & list)
 		aux.Push(cnt->Get_Info());
 	}
 	*this = aux;
+	return (*this);
 }

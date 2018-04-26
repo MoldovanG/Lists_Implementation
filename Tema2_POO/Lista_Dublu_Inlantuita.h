@@ -39,8 +39,8 @@ public:
 		}
 		return out;
 	}
-	void operator = (Lista_Dublu_Inlantuita &);
-	void operator + (Lista_Dublu_Inlantuita &);
+	void operator = (const Lista_Dublu_Inlantuita &);
+	Lista_Dublu_Inlantuita operator + (Lista_Dublu_Inlantuita &); //asta a fost modificata in cadrul laboratorului 
 
 };
 
